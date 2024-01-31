@@ -19,8 +19,8 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 BATCH_SIZE = 16
 NUM_EPOCHS = 10
 NUM_WORKERS = 2
-IMAGE_HEIGHT = 320 # 1290 originally, use 160
-IMAGE_WIDTH = 480 # 1918 originally, use 240
+IMAGE_HEIGHT = 160 # 1290 originally
+IMAGE_WIDTH = 240 # 1918 originally
 PIN_MEMORY = True
 LOAD_MODEL = False
 TRAIN_IMG_DIR = "data/train_images/"
@@ -109,7 +109,7 @@ def main():
             "state_dict": model.state_dict(),
             "optimizer": optimizer.state_dict(),
         }
-        # save_checkpoint(checkpoint)
+        save_checkpoint(checkpoint)
         
         check_accuracy(val_loader, model, device=DEVICE)
 
