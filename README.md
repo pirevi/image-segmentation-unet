@@ -12,3 +12,10 @@ The solution is made from following Youtube Tutorial by [Aladdin Pearson](https:
     * Download the image/images and put it into the **inference_images** folder inside a sub folder named **input**.
     * Run **infer_imgs.py** file.
     * The output will appear in **output** folder inside **inference_images**
+
+### Model Inference
+Input Image:
+<img src="imgs/in_trans_0.png" alt="Input car 0"/>
+
+Output Image:
+<img src="imgs/out_pred_0.png" alt="Input car 0"/>
