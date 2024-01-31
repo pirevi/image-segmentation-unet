@@ -15,7 +15,9 @@ The solution is made from following Youtube Tutorial by [Aladdin Pearson](https:
 
 ### Model Inference
 Input Image:
+
 <img src="imgs/in_trans_0.png" alt="Input car 0"/>
 
 Output Image:
+
 <img src="imgs/out_pred_0.png" alt="Input car 0"/>
