@@ -19,7 +19,7 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 BATCH_SIZE = 16
 NUM_EPOCHS = 10
 NUM_WORKERS = 2
-IMAGE_HEIGHT = 160 # 1290 originally
+IMAGE_HEIGHT = 1600 # 1290 originally
 IMAGE_WIDTH = 240 # 1918 originally
 PIN_MEMORY = True
 LOAD_MODEL = False
@@ -27,6 +27,7 @@ TRAIN_IMG_DIR = "data/train_images/"
 TRAIN_MASK_DIR = "data/train_masks/"
 VAL_IMG_DIR = "data/val_images/"
 VAL_MASK_DIR = "data/val_masks/"
+MODEL_SAVE_NAME = "model_160x240.pth.tar"
 
 
 def train_fn(loader, model, optimizer, loss_fn, scaler):
@@ -97,7 +98,7 @@ def main():
     )
 
     if LOAD_MODEL:
-        load_checkpoint(torch.load("my_checkpoint.pth.tar"), model)
+        load_checkpoint(torch.load(MODEL_SAVE_NAME), model)
 
 
     scaler = torch.cuda.amp.GradScaler()
@@ -109,7 +110,7 @@ def main():
             "state_dict": model.state_dict(),
             "optimizer": optimizer.state_dict(),
         }
-        save_checkpoint(checkpoint)
+        save_checkpoint(checkpoint, filename=MODEL_SAVE_NAME)
         
         check_accuracy(val_loader, model, device=DEVICE)
 

@@ -11,14 +11,15 @@ from utils import (
 
 # params
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-IMAGE_HEIGHT = 450 # model req
-IMAGE_WIDTH = 720 # model req
+IMAGE_HEIGHT = 160 # model req
+IMAGE_WIDTH = 240 # model req
 INFER_IMG_DIR = "inference_imgs/input/"
+MODEL_SAVE_NAME = "model_160x240.pth.tar"
 
 
 def main():
     model = UNET(in_channels=3, out_channels=1).to(DEVICE)
-    load_checkpoint(torch.load("my_checkpoint.pth.tar"), model)
+    load_checkpoint(torch.load(MODEL_SAVE_NAME), model)
 
     img_transforms = A.Compose(
         [
